@@ -2,9 +2,14 @@
   "name": "@pappel-dev/components",
   "version": "1.0.0-alpha.1",
   "description": "js components for pappel",
-  "main": "index.js",
+  "main": "dist/pappel-components.cjs.js",
+  "module": "dist/pappel-components.esm.js",
+  "browser": "dist/pappel-components.umd.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepack": "yarn run build"
   },
   "repository": {
     "type": "git",
@@ -15,5 +20,18 @@
   "bugs": {
     "url": "https://github.com/pappel-dev/components/issues"
   },
-  "homepage": "https://github.com/pappel-dev/components#readme"
+  "homepage": "https://github.com/pappel-dev/components#readme",
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^11.0.2",
+    "@rollup/plugin-node-resolve": "^7.1.1",
+    "@rollup/plugin-replace": "^2.3.1",
+    "@rollup/plugin-typescript": "^4.0.0",
+    "rollup": "^2.0.2",
+    "tslib": "^1.11.1",
+    "typescript": "^3.8.3",
+    "yarn": "^1.22.1"
+  },
+  "files": [
+    "dist"
+  ]
 }
