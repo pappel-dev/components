@@ -1,7 +1,7 @@
 {
   "name": "@pappel-dev/components",
   "version": "1.0.0-alpha.1",
-  "description": " js components for pappel",
+  "description": "js components for pappel",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
