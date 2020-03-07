@@ -1,0 +1,19 @@
+{
+  "name": "@pappel-dev/components",
+  "version": "1.0.0-alpha.1",
+  "description": " js components for pappel",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pappel-dev/components.git"
+  },
+  "author": "@pappel-dev",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pappel-dev/components/issues"
+  },
+  "homepage": "https://github.com/pappel-dev/components#readme"
+}
