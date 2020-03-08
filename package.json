@@ -9,8 +9,9 @@
     "build": "rollup -c",
     "start": "rollup -c -w",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepack": "yarn run clean && yarn run build",
-    "clean": "rimraf ./dist"
+    "prepack": "yarn run clean && yarn run types && yarn run build",
+    "clean": "rimraf ./dist",
+    "types": "tsc src/pappel-components.ts --declaration --declarationDir dist/ --emitDeclarationOnly"
   },
   "repository": {
     "type": "git",
