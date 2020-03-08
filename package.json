@@ -5,6 +5,7 @@
   "main": "dist/pappel-components.cjs.js",
   "module": "dist/pappel-components.esm.js",
   "browser": "dist/pappel-components.umd.js",
+  "types": "dist/pappel-components.d.ts",
   "scripts": {
     "build": "rollup -c",
     "start": "rollup -c -w",
