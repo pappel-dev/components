@@ -16,7 +16,7 @@ const sourcemapGenerator = {
 
 export default [
   {
-    input: "src/main.ts",
+    input: "src/pappel-components.ts",
     output: {
       name: "pappel-components",
       file: pkg.browser,
@@ -31,7 +31,7 @@ export default [
     ]
   },
   {
-    input: "src/main.ts",
+    input: "src/pappel-components.ts",
     output: [
       {
         file: pkg.main,
