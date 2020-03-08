@@ -7,7 +7,7 @@
   "browser": "dist/pappel-components.umd.js",
   "types": "dist/pappel-components.d.ts",
   "scripts": {
-    "build": "eslint && rollup -c",
+    "build": "eslint ./src/**/*.ts && rollup -c",
     "start": "rollup -c -w",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepack": "yarn run clean && yarn run types && yarn run build",
