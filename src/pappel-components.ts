@@ -1,4 +1,4 @@
-import PappelManager from "./classes/PappelManager";
+import PappelManager from "./PappelManager";
 
 export default {
   PappelManager

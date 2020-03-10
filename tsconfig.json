@@ -6,10 +6,22 @@
     "strict": true,
     "esModuleInterop": true
   },
+  "files": [
+    "src/pappel-components.ts"
+  ],
   "include": [
     "src/**/*"
   ],
   "exclude": [
     "node_modules"
-  ]
+  ],
+  "typedocOptions": {
+    "out": "docs",
+    "mode": "file",
+    "exclude": "pappel-components.ts",
+    "json": "docs",
+    "name": "Pappel Components",
+    "includeVersion": true,
+    "entryPoint": "index"
+  }
 }
