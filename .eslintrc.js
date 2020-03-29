@@ -1,11 +1,13 @@
 module.exports = {
     "env": {
         "browser": true,
-        "es6": true
+        "es6": true,
+        "mocha": true
     },
     "extends": [
         "eslint:recommended",
-        "plugin:@typescript-eslint/eslint-recommended"
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:cypress/recommended"
     ],
     "globals": {
         "Atomics": "readonly",
@@ -17,7 +19,8 @@ module.exports = {
         "sourceType": "module"
     },
     "plugins": [
-        "@typescript-eslint"
+        "@typescript-eslint",
+        "cypress"
     ],
     "rules": {
         "indent": [
@@ -81,6 +84,7 @@ module.exports = {
                 "natural": true
             }
         ],
-        "sort-imports": "error"
+        "sort-imports": "error",
+        "cypress/require-data-selectors": "warn"
     }
 };

@@ -16,7 +16,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepack": "yarn run clean && yarn run types && yarn run build",
     "clean": "rimraf ./dist",
-    "types": "tsc src/pappel-components.ts --declaration --declarationDir dist/ --emitDeclarationOnly"
+    "types": "tsc src/pappel-components.ts --declaration --declarationDir dist/ --emitDeclarationOnly",
+    "cypress:open": "cypress open"
   },
   "repository": {
     "type": "git",
@@ -36,7 +37,9 @@
     "@typescript-eslint/eslint-plugin": "^2.22.0",
     "@typescript-eslint/parser": "^2.22.0",
     "browserslist": "^4.9.1",
+    "cypress": "^4.2.0",
     "eslint": "^6.8.0",
+    "eslint-plugin-cypress": "^2.10.3",
     "rimraf": "^3.0.2",
     "rollup": "^1.32.1",
     "tslib": "^1.11.1",
