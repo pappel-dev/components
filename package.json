@@ -6,6 +6,10 @@
   "module": "dist/pappel-components.esm.js",
   "browser": "dist/pappel-components.umd.js",
   "types": "dist/pappel-components.d.ts",
+  "engines": {
+    "node": ">=12.16.1",
+    "yarn": "1.22.1"
+  },
   "scripts": {
     "build": "eslint ./src/**/*.ts && rollup -c",
     "start": "rollup -c -w",
@@ -41,5 +45,6 @@
   },
   "files": [
     "dist"
-  ]
+  ],
+  "dependencies": {}
 }

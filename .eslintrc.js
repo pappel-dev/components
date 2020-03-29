@@ -73,10 +73,6 @@ module.exports = {
             "error",
             "never"
         ],
-        "object-curly-spacing": [
-            "error",
-            "always"
-        ],
         "prefer-object-spread": "error",
         "sort-keys": [
             "error",

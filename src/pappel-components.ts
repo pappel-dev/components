@@ -1,5 +1,5 @@
-import PappelManager from "./PappelManager";
+import Manager from "./Manager";
 
 export default {
-  PappelManager
+  Manager
 };
