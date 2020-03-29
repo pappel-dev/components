@@ -1,4 +1,5 @@
 import commonjs from "@rollup/plugin-commonjs";
+import html from "@rollup/plugin-html";
 import nodeResolve from "@rollup/plugin-node-resolve";
 import pkg from "./package.json";
 import replace from "@rollup/plugin-replace";
@@ -20,14 +21,15 @@ const umd = {
   output: {
     file: pkg.browser,
     format: "umd",
-    name: "pappel-components",
+    name: "pappel",
     noConflict: true,
     ...sourcemapGenerator
   },
   plugins: [
     nodeResolve(),
     commonjs(),
-    ...usualPlugins
+    ...usualPlugins,
+    html()
   ]
 };
 
