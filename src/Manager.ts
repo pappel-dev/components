@@ -115,6 +115,24 @@ export class Manager {
     return childComponents;
   }
 
+  public setParentComponent(newParent: Component | undefined, child: Component): void {
+    child.parentComponent = newParent;
+  }
+
+  public addChildComponent(addedChild: Component, parent: Component): void {
+    if (!parent.childComponents.includes(addedChild)) {
+      parent.childComponents.push(addedChild);
+    }
+  }
+
+  public removeChildComponent(removedChild: Component, parent: Component): void {
+    const index = parent.childComponents.indexOf(removedChild);
+
+    if (index > -1) {
+      parent.childComponents.splice(index, 1);
+    }
+  }
+
   private initObserver(): void {
     if (this.observer === undefined) {
       this.observer = new MutationObserver(this.onMutation.bind(this));
