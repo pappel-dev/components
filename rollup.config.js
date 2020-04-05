@@ -2,6 +2,7 @@ import commonjs from "@rollup/plugin-commonjs";
 import nodeResolve from "@rollup/plugin-node-resolve";
 import pkg from "./package.json";
 import replace from "@rollup/plugin-replace";
+import { terser } from "rollup-plugin-terser";
 import typescript from "@rollup/plugin-typescript";
 
 const usualPlugins = [
@@ -27,7 +28,8 @@ const umd = {
   plugins: [
     nodeResolve(),
     commonjs(),
-    ...usualPlugins
+    ...usualPlugins,
+    terser()
   ]
 };
 
