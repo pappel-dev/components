@@ -12,9 +12,10 @@
   },
   "scripts": {
     "build": "eslint ./src/**/*.ts && rollup -c",
+    "serve": "http-server -o test/ -d",
     "start": "rollup -c -w",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepack": "yarn run clean && yarn run types && yarn run build",
+    "prepack": "npm run clean && npm run types && npm run build",
     "clean": "rimraf ./dist",
     "types": "tsc src/pappel-components.ts --declaration --declarationDir dist/ --emitDeclarationOnly",
     "cypress:open": "cypress open"
@@ -31,7 +32,6 @@
   "homepage": "https://github.com/pappel-dev/components#readme",
   "devDependencies": {
     "@rollup/plugin-commonjs": "^11.0.2",
-    "@rollup/plugin-html": "^0.1.1",
     "@rollup/plugin-node-resolve": "^7.1.1",
     "@rollup/plugin-replace": "^2.3.1",
     "@rollup/plugin-typescript": "^4.0.0",
@@ -41,6 +41,7 @@
     "cypress": "^4.2.0",
     "eslint": "^6.8.0",
     "eslint-plugin-cypress": "^2.10.3",
+    "http-server": "^0.12.1",
     "rimraf": "^3.0.2",
     "rollup": "^1.32.1",
     "tslib": "^1.11.1",

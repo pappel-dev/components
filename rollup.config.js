@@ -1,5 +1,4 @@
 import commonjs from "@rollup/plugin-commonjs";
-import html from "@rollup/plugin-html";
 import nodeResolve from "@rollup/plugin-node-resolve";
 import pkg from "./package.json";
 import replace from "@rollup/plugin-replace";
@@ -28,8 +27,7 @@ const umd = {
   plugins: [
     nodeResolve(),
     commonjs(),
-    ...usualPlugins,
-    html()
+    ...usualPlugins
   ]
 };
 

@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pappel Manager Test 1</title>
+    <script src="../dist/pappel-components.umd.js"></script>
+</head>
+<body>
+<main>
+    <h1>Pappel Manager Test 1</h1>
+    <div data-p-comp="test" id="test1">Test</div>
+    <script>
+        var manager = new pappel.Manager({
+          components: {
+            test: () => {}
+          },
+          scope: document.querySelector("main")
+        });
+    </script>
+</main>
+</body>
+</html>
