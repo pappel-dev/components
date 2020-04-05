@@ -88,6 +88,7 @@ module.exports = {
             }
         ],
         "sort-imports": "error",
-        "cypress/require-data-selectors": "warn"
+        "cypress/require-data-selectors": "warn",
+        "@typescript-eslint/no-unused-vars": "error"
     }
 };

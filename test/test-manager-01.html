@@ -11,15 +11,28 @@
 <body>
 <main>
     <h1>Pappel Manager Test 1</h1>
-    <div data-p-comp="test" id="test1">Test</div>
+    <h2>Main</h2>
+    <div data-p-comp="test1">Test</div>
     <script>
-        var manager = new pappel.Manager({
+        var managerMain = new pappel.Manager({
           components: {
-            test: () => {}
+            test1: pappel.Component
           },
           scope: document.querySelector("main")
         });
     </script>
 </main>
+<footer>
+    <h2>Footer</h2>
+    <div data-p-comp="test2">Test</div>
+    <script>
+      var managerFooter = new pappel.Manager({
+        components: {
+          test2: pappel.Component
+        },
+        scope: document.querySelector("footer")
+      });
+    </script>
+</footer>
 </body>
 </html>

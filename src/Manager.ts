@@ -1,13 +1,17 @@
-import {IdGenerator} from "./IdGenerator";
+import {IdGenerator, PappelId} from "./IdGenerator";
+import {Component} from "./Component";
 
-export interface ComponentMapping {
-  [key: string]: any;
+export type ComponentType = string;
+
+export type ComponentMapping = {
+  [key in ComponentType]: any;
 }
 
 export interface Options {
-  componentAttr: string,
-  components: ComponentMapping,
-  scope: Node
+  componentAttr: string;
+  components: ComponentMapping;
+  idAttr: string;
+  scope: Node;
 }
 
 /**
@@ -17,31 +21,34 @@ export class Manager {
   /**
    * Represents the version of @pappel-dev/components currently in use.
    */
-  public version: string = "__version__";
+  public readonly version: string = "__version__";
 
   /**
    * used to identify class internally
    */
-  private id: string;
+  private readonly id: PappelId;
 
   /**
    * Options used internally
    */
-  private options: Options;
+  public readonly options: Options;
 
   /**
    * MutationObserver instance
    */
-  private static observer: MutationObserver | undefined;
+  private observer: MutationObserver | undefined;
 
   /**
    * Default options
    */
-  private defaultOptions: Options = {
+  private readonly defaultOptions: Options = {
     componentAttr: "data-p-comp",
     components: {},
+    idAttr: "data-p-id",
     scope: document
   };
+
+  private components: { [key in PappelId]: Component } = {};
 
   /**
    * @param managerOptions: a set of options
@@ -55,9 +62,30 @@ export class Manager {
     this.searchAndInitOrDestroyComponents(this.options.scope, "init");
   }
 
+  public getComponentByElem(elem: Element): Component | undefined {
+    if (!elem.hasAttribute(this.options.idAttr)) {
+      return undefined;
+    }
+
+    const id = elem.getAttribute(this.options.idAttr);
+    if (id === null) {
+      return undefined;
+    }
+
+    return this.getComponentById(id);
+  }
+
+  public getComponentById(id: PappelId): Component | undefined {
+    if (Object.prototype.hasOwnProperty.call(this.components, id)) {
+      return this.components[id];
+    } else {
+      return undefined;
+    }
+  }
+
   private initObserver(): void {
-    if (Manager.observer === undefined) {
-      Manager.observer = new MutationObserver(this.onMutation.bind(this));
+    if (this.observer === undefined) {
+      this.observer = new MutationObserver(this.onMutation.bind(this));
     }
   }
 
@@ -70,7 +98,7 @@ export class Manager {
       subtree: true
     };
 
-    Manager.observer?.observe(this.options.scope, options);
+    this.observer?.observe(this.options.scope, options);
   }
 
   private onMutation(records: MutationRecord[]): void {
@@ -98,7 +126,7 @@ export class Manager {
     const {oldValue} = record;
 
     if (oldValue !== null && this.componentTypeExists(oldValue)) {
-      this.destroyComponent(elem, oldValue);
+      this.destroyComponent(elem);
     }
 
     if (newValue !== null && this.componentTypeExists(newValue)) {
@@ -133,20 +161,35 @@ export class Manager {
       if (action === "init") {
         this.initComponent(elem, type);
       } else {
-        this.destroyComponent(elem, type);
+        this.destroyComponent(elem);
       }
     }
   }
 
-  private initComponent(elem: Element, type: string): void {
-    console.log("init", type, elem);
+  private initComponent(elem: Element, type: ComponentType): void {
+    const id = IdGenerator.getNewId();
+    const component = new this.options.components[type]({
+      elem,
+      id,
+      manager: this,
+      type
+    });
+
+    this.components[id] = component;
+    component.init();
   }
 
-  private destroyComponent(elem: Element, type: string): void {
-    console.log("destroy", type, elem);
+  private destroyComponent(elem: Element): void {
+    const component = this.getComponentByElem(elem);
+    if (component === undefined) {
+      return;
+    }
+
+    component.destroy();
+    delete this.components[component.id];
   }
 
-  private componentTypeExists(type: string): boolean {
+  private componentTypeExists(type: ComponentType): boolean {
     return Object.prototype.hasOwnProperty.call(this.options.components, type);
   }
 }
