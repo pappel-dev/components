@@ -83,6 +83,38 @@ export class Manager {
     }
   }
 
+  public getParentComponentByElem(elem: Element): Component | undefined {
+    const parent = elem.parentElement;
+
+    if (parent === null || this.options.scope.isSameNode(parent)) {
+      return undefined;
+    }
+
+    const comp = this.getComponentByElem(parent);
+
+    if (comp === undefined) {
+      return this.getParentComponentByElem(parent);
+    } else {
+      return comp;
+    }
+  }
+
+  public getChildComponentsByElem(elem: Element): Component[] {
+    let childComponents: Component[] = [];
+
+    for (let child of Array.from(elem.children)) {
+      const comp = this.getComponentByElem(child);
+      if (comp !== undefined) {
+        childComponents.push(comp);
+        continue;
+      }
+
+      childComponents = childComponents.concat(this.getChildComponentsByElem(child));
+    }
+
+    return childComponents;
+  }
+
   private initObserver(): void {
     if (this.observer === undefined) {
       this.observer = new MutationObserver(this.onMutation.bind(this));

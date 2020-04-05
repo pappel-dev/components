@@ -11,15 +11,15 @@ export interface ComponentOptions {
 export class Component {
   public readonly type: ComponentType;
   public readonly id: string;
-  protected readonly manager: Manager;
   protected readonly elem: Element;
+  protected readonly manager: Manager;
 
   public get parentComponent(): Component | undefined {
-    return undefined;
+    return this.manager.getParentComponentByElem(this.elem);
   }
 
   public get childComponents(): Component[] {
-    return [];
+    return this.manager.getChildComponentsByElem(this.elem);
   }
 
   constructor(options: ComponentOptions) {

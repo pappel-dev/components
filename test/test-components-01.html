@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pappel Components Test 1</title>
+    <script src="../dist/pappel-components.umd.js"></script>
+</head>
+<body>
+<main>
+    <h1>Pappel Components Test 1</h1>
+    <h2>Main</h2>
+    <ol>
+        <li data-p-comp="test">
+            <span>Test</span>
+            <ol>
+                <li data-p-comp="test">
+                    <span>Test</span>
+                </li>
+                <li data-p-comp="test">
+                    <span>Test</span>
+                <li data-p-comp="test">
+                    <span>Test</span>
+                    <ol>
+                        <li data-p-comp="test">
+                            <span>Test</span>
+                        </li>
+                        <li data-p-comp="test">
+                            <span>Test</span>
+                        </li>
+                        <li data-p-comp="test">
+                            <span>Test</span>
+                        <li data-p-comp="test">
+                            <span>Test</span>
+                            <ol>
+                                <li data-p-comp="test">
+                                    <span>Test</span>
+                                </li>
+                                <li data-p-comp="test">
+                                    <span>Test</span>
+                                </li>
+                                <li data-p-comp="test">
+                                    <span>Test</span>
+                                </li>
+                            </ol>
+                        </li>
+                    </ol>
+                </li>
+                <li data-p-comp="test">
+                    <span>Test</span>
+                </li>
+            </ol>
+        </li>
+        <li data-p-comp="test">
+            <span>Test</span>
+            <ol>
+                <li data-p-comp="test">
+                    <span>Test</span>
+                </li>
+                <li data-p-comp="test">
+                    <span>Test</span>
+                </li>
+                <li data-p-comp="test">
+                    <span>Test</span>
+                </li>
+            </ol>
+        </li>
+        <li data-p-comp="test">
+            <span>Test</span>
+            <ol>
+                <li data-p-comp="test">
+                    <span>Test</span>
+                </li>
+                <li data-p-comp="test">
+                    <span>Test</span>
+                </li>
+                <li data-p-comp="test">
+                    <span>Test</span>
+                </li>
+            </ol>
+        </li>
+    </ol>
+    <script>
+      var managerMain = new pappel.Manager({
+        components: {
+          test: pappel.Component
+        },
+        scope: document.querySelector("main")
+      });
+    </script>
+</main>
+</body>
+</html>
