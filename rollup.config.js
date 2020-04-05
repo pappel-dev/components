@@ -12,7 +12,7 @@ const usualPlugins = [
 ];
 
 const sourcemapGenerator = {
-  sourcemap: "hidden"
+  sourcemap: true
 };
 
 const umd = {
