@@ -1,6 +1,6 @@
 {
   "name": "@pappel-dev/components",
-  "version": "1.0.0-alpha.1",
+  "version": "0.1.0",
   "description": "js components for pappel",
   "main": "dist/pappel-components.cjs.js",
   "module": "dist/pappel-components.esm.js",
@@ -8,7 +8,8 @@
   "types": "dist/pappel-components.d.ts",
   "engines": {
     "node": ">=12.16.1",
-    "yarn": "1.22.1"
+    "yarn": "1.22.1",
+    "npm": ">=6.13.4"
   },
   "scripts": {
     "build": "eslint ./src/**/*.ts && rollup -c",
